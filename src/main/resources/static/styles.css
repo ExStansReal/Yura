@@ -1,0 +1,66 @@
+body {
+    background-image: url("zoopark.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+header{
+
+}
+
+h1{
+    color: darkblue;
+}
+
+h2{
+    color: darkblue;
+}
+
+h3{
+  color: darkblue;
+}
+
+h4{
+    color: darkblue;
+}
+h5{
+    color: darkblue;
+}
+
+li{
+    list-style-type: none;
+}
+
+p{
+    color: darkblue;
+}
+
+.HeaderClass{
+    background-color: gray;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    border: 1px solid black;
+ }
+
+.background_form{
+    background-image: url("zoopark.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 10px;
+
+}
+
+
+.header_lIST{
+    display: flex;
+    margin-top: 10px;
+}
+
+.header_lIST>li{
+    margin-right: 5px;
+}
