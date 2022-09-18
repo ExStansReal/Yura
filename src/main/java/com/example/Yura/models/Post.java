@@ -2,6 +2,7 @@ package com.example.Yura.models;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.Collection;
 
 @Entity
@@ -9,54 +10,63 @@ import java.util.Collection;
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID_Post;
+    private Long id_post;
 
-    private String Name;
+    @NotEmpty(message = "Название не может быть пустым!")
+    @Size(message = "Строка не может быть меньше или больше", min = 3, max = 1000)
+    private String name;
+    @Min(message = "Число не может быть отрицательным",value = 0)
+    @Max(message = "Число не может быть больше 1000000",value = 1000000)
+    @NotNull(message = "Число не может быть пустым")
+    private Integer salary;
 
-    private Integer Salary;
+    @OneToMany (mappedBy = "post", fetch = FetchType.EAGER)
+    private Collection<User> users;
 
-    @OneToMany (mappedBy = "Post", fetch = FetchType.EAGER)
-    private Collection<Post> post;
+    public Post(String name, Integer salary) {
+        this.name = name;
+        this.salary = salary;
+    }
 
-    public Post(String name, Integer salary, Collection<Post> post) {
-        Name = name;
-        Salary = salary;
-        this.post = post;
+    public Post(String name, Integer salary, Collection<User> users) {
+        this.name = name;
+        this.salary = salary;
+        this.users = users;
     }
 
     public Post() {
 
     }
 
-    public Long getID_Post() {
-        return ID_Post;
+    public Long getId_ppst() {
+        return id_post;
     }
 
-    public void setID_Post(Long ID_Post) {
-        this.ID_Post = ID_Post;
+    public void setId_ppst(Long id_ppst) {
+        this.id_post = id_ppst;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public Integer getSalary() {
-        return Salary;
+        return salary;
     }
 
     public void setSalary(Integer salary) {
-        Salary = salary;
+        this.salary = salary;
     }
 
-    public Collection<Post> getPost() {
-        return post;
+    public Collection<User> getUsers() {
+        return users;
     }
 
-    public void setPost(Collection<Post> post) {
-        this.post = post;
+    public void setUsers(Collection<User> users) {
+        this.users = users;
     }
 }

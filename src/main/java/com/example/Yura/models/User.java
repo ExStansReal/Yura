@@ -1,6 +1,8 @@
 package com.example.Yura.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -9,48 +11,63 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID_User;
+    private Long id_user;
 
-    private String username;
+
+    @NotEmpty(message = "Поле не может быть пустым!")
+    @Size(message = "Поле не может быть меньше или больше", min = 1, max = 100)
+    private String username,name,surname,patronymec;
+
     private String password;
-    private String Name;
-    private String Surname;
-    private String Patronymec;
+
+    @OneToOne(optional = true, mappedBy = "user")
+    private Kart kart;
+
+
+    private boolean active;
 
     @ManyToOne(optional = true, cascade = CascadeType.ALL)
     private Post post;
 
-    public Post getPost() {
-        return post;
-    }
 
-    public void setPost(Post post) {
-        this.post = post;
-    }
-
-    public User(String username, String password, String name, String surname, String patronymec, Post post, Set<Role> roles) {
-        this.username = username;
-        this.password = password;
-        Name = name;
-        Surname = surname;
-        Patronymec = patronymec;
-        this.post = post;
-        this.roles = roles;
-    }
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "Role", joinColumns = @JoinColumn(name = "User_Id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
+
+    public User(String username, String password, String name, String surname, String patronymec) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.patronymec = patronymec;
+    }
+
+    public User(String username, String password, String name, Kart kart, String surname, String patronymec, boolean active, Post post, Set<Role> roles) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.kart = kart;
+        this.surname = surname;
+        this.patronymec = patronymec;
+        this.active = active;
+        this.post = post;
+        this.roles = roles;
+    }
+
+    public String getPostName() {
+        return post.getName();
+    }
     public User() {
 
     }
 
-    public Long getID_User() {
-        return ID_User;
+    public Long getId_user() {
+        return id_user;
     }
 
-    public void setID_User(Long ID_User) {
-        this.ID_User = ID_User;
+    public void setId_user(Long id_user) {
+        this.id_user = id_user;
     }
 
     public String getUsername() {
@@ -70,27 +87,51 @@ public class User {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
+    }
+
+    public Kart getKart() {
+        return kart;
+    }
+
+    public void setKart(Kart kart) {
+        this.kart = kart;
     }
 
     public String getSurname() {
-        return Surname;
+        return surname;
     }
 
     public void setSurname(String surname) {
-        Surname = surname;
+        this.surname = surname;
     }
 
     public String getPatronymec() {
-        return Patronymec;
+        return patronymec;
     }
 
     public void setPatronymec(String patronymec) {
-        Patronymec = patronymec;
+        this.patronymec = patronymec;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
     }
 
     public Set<Role> getRoles() {
@@ -100,10 +141,4 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-
-
-
-
-
-
 }

@@ -10,22 +10,22 @@ header{
 }
 
 h1{
-    color: darkblue;
+    color: black;
 }
 
 h2{
-    color: darkblue;
+    color: black;
 }
 
 h3{
-  color: darkblue;
+  color: black;
 }
 
 h4{
-    color: darkblue;
+    color: black;
 }
 h5{
-    color: darkblue;
+    color: black;
 }
 
 li{
@@ -33,19 +33,21 @@ li{
 }
 
 p{
-    color: darkblue;
+    color: black;
 }
 
 .HeaderClass{
-    background-color: gray;
+    background-color: cadetblue;
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 10px;
     border: 1px solid black;
+
  }
 
 .background_form{
-    background-image: url("zoopark.jpg");
+    margin-top: 10px;
+    background-color: cadetblue;
     background-repeat: no-repeat;
     background-size: cover;
     border: 1px solid black;

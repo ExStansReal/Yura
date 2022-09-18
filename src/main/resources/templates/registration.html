@@ -12,9 +12,20 @@
 <h1>Регистрация нового пользователя</h1>
 
 <h3 th:text="${error}" style="color: red"></h3>
-<form th:action="@{/registration}" method="post" class="background_form">
-  <div><label> User Name : <input type="text" name="username"/> </label></div>
-  <div><label> Password: <input type="password" name="password"/> </label></div>
+<form th:action="@{/registration}" method="post" class="background_form" >
+
+  <p>Логин
+    <input type="text" id="username" name="username" placeholder="Логин">
+  <p>Пароль
+    <input type="password" id="password" name="password" placeholder="Пароль">
+  <p>Имя
+    <input type="text" id="name" name="name" placeholder="Имя">
+  <p>Фамилия
+    <input type="text" id="surname" name="surname" placeholder="Фамилия">
+  <p>Отчество
+    <input type="text" id="patronymec" name="patronymec" placeholder="Отчество">
+
+
   <div><input type="submit" value="Зарегистрироваться"/></div>
   <a href="/login">Назад</a>
 </form>

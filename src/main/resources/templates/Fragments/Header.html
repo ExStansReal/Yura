@@ -1,0 +1,17 @@
+<div th:fragment="defaultHeader">
+  <header style="display: inline-block">
+   <ul class="header_lIST">
+       <li><a class="btn btn-primary"  href="/">Главная страница</a></li>
+       <li><a class="btn btn-primary"  href="/Users/">Пользователи</a></li>
+       <li><a class="btn btn-primary"  href="/Post/">Должности</a></li>
+       <li><a class="btn btn-primary"  href="/Kart/">Личные карты</a></li>
+       <li><a class="btn btn-primary"  href="/CellType/">Тип клетки</a></li>
+       <li><a class="btn btn-primary"  href="/Zoo/">Зоопарки</a></li>
+     <li>
+       <form th:action="@{/logout}" method="post">
+           <div><input type="submit" value="Log out" class="btn btn-seccsess"/></div>
+       </form>
+       </li>
+   </ul>
+  </header>
+</div>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Getting Started: Serving Web Content</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div class="HeaderClass" th:insert="Fragments/Header :: defaultHeader"/>
+
+
+<div th:each="el : ${kart}" class="background_form" style="display: inline-block; margin-top: 10px" >
+  <h3 th:text="${el.personal_Key}"></h3>
+  <h4 th:text="${el.allowed}"></h4>
+  <h4 th:text="${el.type}"></h4>
+  <h4 th:text="${el.getUserUserName()}"></h4>
+  <a th:href="'/Kart/del/' + ${el.getID_Kart()}" class="btn btn-primary" style="margin-bottom: 10px">Удалить</a>
+  <br>
+  <a th:href="'/Kart/edit/' + ${el.getID_Kart()}" class="btn btn-primary" style="margin-bottom: 10px">Изменить данные</a>
+  <br>
+  <a href="/Kart/" class="btn btn-primary" >Назад</a>
+</div>
+</body>
+</html>
