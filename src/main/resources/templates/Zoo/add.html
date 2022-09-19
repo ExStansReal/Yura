@@ -7,22 +7,20 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-<div th:insert="Fragments/Header :: defaultHeader"/>
-
+<div  th:insert="Fragments/Header :: defaultHeader"/>
 <div class="background_form">
-<form action="/Post/add" method="post" th:object="${post}" style="display: inline-block">
+<h3  th:text="${error}" style="color: red"></h3>
+<form action="/Zoo/add" method="post" th:object="${zoopark}" style="display: inline-block">
   <p>Название
     <input type="text" id="name" th:field="*{name}" placeholder="Имя">
-  <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
-  <p>Зарплата
-    <input type="number" id="salary" th:field="*{salary}" placeholder="Зарплата">
-  <div th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}"></div>
+  <p>Адресс
+    <input type="text" id="adress" th:field="*{adress}" placeholder="Адресс">
   <br>
   <input type="submit" value="Добавить переменную" class="btn btn-seccsess"/>
 </form>
 
 <br>
-<a href="/Post/" class="btn btn-primary">Назад</a>
+<a href="/Zoo/" class="btn btn-primary">Назад</a>
 </div>
 </body>
 </html>

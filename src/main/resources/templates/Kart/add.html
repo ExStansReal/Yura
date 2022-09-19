@@ -7,12 +7,12 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-<div th:insert="Fragments/Header :: defaultHeader"/>
-
+<div  th:insert="Fragments/Header :: defaultHeader"/>
+<h3  th:text="${error}" style="color: red"></h3>
 <div class="background_form">
-<form action="/Kart/add" method="post" th:object="${kart}" style="display: inline-block">
+<form  action="/Kart/add" method="post" th:object="${kart}" style="display: inline-block">
   <p>Персональный ключ
-    <input type="text" id="personal_Key" th:field="*{personal_Key}" placeholder="Ключ">
+    <input type="number" id="personal_Key" min="100" max="10000000" th:field="*{personal_Key}" placeholder="Ключ">
   <div th:if="${#fields.hasErrors('personal_Key')}" th:errors="*{personal_Key}"></div>
   <p>Описание(тип)
     <input type="text" id="type" th:field="*{type}" placeholder="Тип">

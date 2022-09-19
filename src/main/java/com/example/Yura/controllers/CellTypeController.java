@@ -2,11 +2,9 @@ package com.example.Yura.controllers;
 
 
 import com.example.Yura.Repositoriy.CellTypeRepository;
+import com.example.Yura.Repositoriy.FoodTypeRepository;
 import com.example.Yura.Repositoriy.PostRepository;
-import com.example.Yura.models.CellType;
-import com.example.Yura.models.Post;
-import com.example.Yura.models.Role;
-import com.example.Yura.models.User;
+import com.example.Yura.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +29,7 @@ public class CellTypeController {
         model.addAttribute("types", bananas);
         return "CellType/index";
     }
+
     @GetMapping("/addView")
     public  String addView(Model model){
 

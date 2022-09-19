@@ -9,32 +9,32 @@
 <body>
 <div  th:insert="Fragments/Header :: defaultHeader"/>
 
-<h1 class="background_form">Страница пользователей</h1>
+<h1 class="background_form">Страница карт</h1>
 <ul>
   <li>
-    <form  action="/Users/search" class="background_form" style="display: inline-block">
-      <input name="surname" id="title" placeholder="Точный поиск">
+    <form  action="/MealPlan/search" class="background_form" style="display: inline-block">
+      <input  name="time" id="title" placeholder="Точный поиск">
       <input type="submit" value="Найти">
 
     </form>
   </li>
   <li>
-    <form  action="/Users/searchContaints" class="background_form" style="display: inline-block">
-      <input name="surname" id="name1" placeholder="Не точный поиск">
+    <form  action="/MealPlan/searchContaints" class="background_form" style="display: inline-block">
+      <input  name="time" id="name1" placeholder="Не точный поиск">
       <input type="submit" value="Найти">
 
     </form>
   </li>
   <li style="display: inline-grid; margin-top: 10px">
-    <div th:each="el : ${users}" class="background_form" style="display: inline-block; margin-top: 10px">
-      <h3 th:text="${el.surname}"></h3>
-      <h4 th:text="${el.name}"></h4>
-      <h5 th:text="${el.patronymec}"></h5>
-      <a th:href="'/Users/' + ${el.id_user}" class="btn btn-primary" style="margin-bottom: 10px">Подробнее</a>
+    <div th:each="el : ${meals}" class="background_form" style="display: inline-block; margin-top: 10px">
+      <h3 th:text="${el.timefrom}"></h3>
+      <h4 th:text="${el.timefor}"></h4>
+      <h4 th:text="${el.type.getName()}"></h4>
+      <a th:href="'/MealPlan/' + ${el.id_mealplan}" class="btn btn-primary" style="margin-bottom: 10px">Данные</a>
     </div>
   </li>
   <li style="margin-top: 10px">
-    <a href="/Users/addView" class="btn btn-primary">Добавить</a>
+    <a href="/MealPlan/addView" class="btn btn-primary">Добавить</a>
   </li>
 </ul>
 </body>

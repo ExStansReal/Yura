@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface KartRepository extends CrudRepository<Kart,Long> {
 
-    public List<Kart> findByPersonalkey(Integer key);
-    public List<Kart> findByPersonalkeyContains(Integer key);
+    public List<Kart> findByPersonalkey(String key);
+    public List<Kart> findByPersonalkeyContains(String key);
 }

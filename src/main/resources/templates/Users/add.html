@@ -7,10 +7,10 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-<div th:insert="Fragments/Header :: defaultHeader"/>
+<div  th:insert="Fragments/Header :: defaultHeader"/>
 
 <div class="background_form">
-<form action="/Users/add" method="post" th:object="${user}" style="display: inline-block">
+<form  action="/Users/add" method="post" th:object="${user}" style="display: inline-block">
   <p>Название
     <input type="text" id="name" th:field="*{name}" placeholder="Имя">
   <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
@@ -31,7 +31,7 @@
 </form>
 
 <br>
-<a href="/Bananas/" class="btn btn-primary">Назад</a>
+<a href="/Users/" class="btn btn-primary">Назад</a>
 </div>
 </body>
 </html>

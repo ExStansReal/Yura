@@ -7,23 +7,21 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
 
-<div class="HeaderClass" th:insert="Fragments/Header :: defaultHeader"/>
+<div  th:insert="Fragments/Header :: defaultHeader"/>
 
-<h3 class="background_form" th:text="${error}" style="color: red"></h3>
+<h3  th:text="${error}" style="color: red"></h3>
 <br>
 
-<form th:action="'/CellType/edit/' + ${id}", method="post" class="background_form"  th:object="${type}" style="margin-top: 10px">
+<form th:action="'/Zoo/edit/' + ${id}", method="post" class="background_form"  th:object="${zoopark}" style="margin-top: 10px">
 
     <p>Название
         <input type="text" id="name" th:field="*{name}" placeholder="Имя">
-    <p>Климат
-        <input type="text" id="climat" th:field="*{climat}" placeholder="Климат">
-    <p>Температура
-        <input type="number" id="temperature" th:field="*{temperature}" placeholder="Температура">
+    <p>Адресс
+        <input type="text" id="adress" th:field="*{adress}" placeholder="Климат">
     <br>
 
     <input type="submit" value="Изменить данные" class="btn btn-seccsess"/> <br>
-    <a class="btn btn-primary" href="/Post/"> Назад</a>
+    <a class="btn btn-primary" href="/Zoo/"> Назад</a>
 
 
 

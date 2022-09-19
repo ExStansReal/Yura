@@ -1,5 +1,5 @@
 <div th:fragment="defaultHeader">
-  <header style="display: inline-block">
+  <header style="display: inline-block" class="HeaderClass">
    <ul class="header_lIST">
        <li><a class="btn btn-primary"  href="/">Главная страница</a></li>
        <li><a class="btn btn-primary"  href="/Users/">Пользователи</a></li>
@@ -7,6 +7,9 @@
        <li><a class="btn btn-primary"  href="/Kart/">Личные карты</a></li>
        <li><a class="btn btn-primary"  href="/CellType/">Тип клетки</a></li>
        <li><a class="btn btn-primary"  href="/Zoo/">Зоопарки</a></li>
+       <li><a class="btn btn-primary"  href="/Cell/">Клетки</a></li>
+       <li><a class="btn btn-primary"  href="/FoodType/">Тип еды</a></li>
+       <li><a class="btn btn-primary"  href="/MealPlan/">План приёма пищи</a></li>
      <li>
        <form th:action="@{/logout}" method="post">
            <div><input type="submit" value="Log out" class="btn btn-seccsess"/></div>

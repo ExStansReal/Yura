@@ -9,32 +9,32 @@
 <body>
 <div  th:insert="Fragments/Header :: defaultHeader"/>
 
-<h1 class="background_form">Страница пользователей</h1>
+<h1 class="background_form">Страница клеток</h1>
+<h3  th:text="${error}" style="color: red"></h3>
 <ul>
   <li>
-    <form  action="/Users/search" class="background_form" style="display: inline-block">
-      <input name="surname" id="title" placeholder="Точный поиск">
+    <form  action="/Cell/search" class="background_form" style="display: inline-block">
+      <input name="name" id="title" placeholder="Точный поиск">
       <input type="submit" value="Найти">
 
     </form>
   </li>
   <li>
-    <form  action="/Users/searchContaints" class="background_form" style="display: inline-block">
-      <input name="surname" id="name1" placeholder="Не точный поиск">
+    <form  action="/Cell/searchContaints" class="background_form" style="display: inline-block">
+      <input name="name" id="name1" placeholder="Не точный поиск">
       <input type="submit" value="Найти">
 
     </form>
   </li>
   <li style="display: inline-grid; margin-top: 10px">
-    <div th:each="el : ${users}" class="background_form" style="display: inline-block; margin-top: 10px">
-      <h3 th:text="${el.surname}"></h3>
-      <h4 th:text="${el.name}"></h4>
-      <h5 th:text="${el.patronymec}"></h5>
-      <a th:href="'/Users/' + ${el.id_user}" class="btn btn-primary" style="margin-bottom: 10px">Подробнее</a>
+    <div th:each="el : ${cells}" class="background_form" style="display: inline-block; margin-top: 10px">
+      <h3 th:text="${el.name}"></h3>
+      <h4 th:text="${el.size}"></h4>
+      <a th:href="'/Cell/' + ${el.id_cell}" class="btn btn-primary" style="margin-bottom: 10px">Данные</a>
     </div>
   </li>
   <li style="margin-top: 10px">
-    <a href="/Users/addView" class="btn btn-primary">Добавить</a>
+    <a href="/Cell/addView" class="btn btn-primary">Добавить</a>
   </li>
 </ul>
 </body>

@@ -7,14 +7,13 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
 
-<div class="HeaderClass" th:insert="Fragments/Header :: defaultHeader"/>
-
+<div  th:insert="Fragments/Header :: defaultHeader"/>
+<h3  th:text="${error}" style="color: red"></h3>
 
 
 <form th:action="'/Kart/edit/' + ${id}", method="post" class="background_form"  th:object="${kart}" style="margin-top: 10px">
 
-    <p>Персональный ключ
-        <input type="text" id="personal_Key" th:field="*{personal_Key}" placeholder="Ключ">
+        <input type="hidden" id="personal_Key" min="100" max="10000000" th:field="*{personal_Key}" placeholder="Ключ">
     <div th:if="${#fields.hasErrors('personal_Key')}" th:errors="*{personal_Key}"></div>
     <p>Описание(тип)
         <input type="text" id="type" th:field="*{type}" placeholder="Тип">
@@ -23,16 +22,9 @@
         <input type="checkbox" id="allowed" th:field="*{allowed}" placeholder="Разрешение">
     <div th:if="${#fields.hasErrors('allowed')}" th:errors="*{allowed}"></div>
     <br>
-    <p>Выберете пользователя:</p>
-    <select style="margin-top: 10px"  name="username">
-        <div th:each="element : ${users}">
-            <option th:text="${element.username}"></option>
-        </div>
-    </select>
-    <br>
 
     <input type="submit" value="Изменить данные" class="btn btn-seccsess"/> <br>
-    <a class="btn btn-primary" href="/Post/"> Назад</a>
+    <a class="btn btn-primary" href="/Kart/"> Назад</a>
 
 
 

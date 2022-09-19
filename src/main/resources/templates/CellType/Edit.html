@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
 
-<div class="HeaderClass" th:insert="Fragments/Header :: defaultHeader"/>
+<div  th:insert="Fragments/Header :: defaultHeader"/>
 
-<h3 class="background_form" th:text="${error}" style="color: red"></h3>
+<h3  th:text="${error}" style="color: red"></h3>
 <br>
 
-<form th:action="'/Zoopark/edit/' + ${id}", method="post" class="background_form"  th:object="${type}" style="margin-top: 10px">
+<form th:action="'/CellType/edit/' + ${id}", method="post" class="background_form"  th:object="${type}" style="margin-top: 10px">
 
     <p>Название
         <input type="text" id="name" th:field="*{name}" placeholder="Имя">

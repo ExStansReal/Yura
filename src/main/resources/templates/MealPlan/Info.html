@@ -11,15 +11,15 @@
 <div  th:insert="Fragments/Header :: defaultHeader"/>
 
 
-<div th:each="el : ${type}" class="background_form" style="display: inline-block; margin-top: 10px" >
-  <h4 th:text="${el.name}"></h4>
-  <h4 th:text="${el.temperature}"></h4>
-  <h4 th:text="${el.climat}"></h4>
-  <a th:href="'/CellType/del/' + ${el.id_celltype}" class="btn btn-primary" style="margin-bottom: 10px">Удалить</a>
+<div th:each="el : ${meal}" class="background_form" style="display: inline-block; margin-top: 10px" >
+  <h3 th:text="${el.timefrom}"></h3>
+  <h4 th:text="${el.timefor}"></h4>
+  <h4 th:text="${el.type.getName()}"></h4>
+  <a th:href="'/MealPlan/del/' + ${el.id_mealplan}" class="btn btn-primary" style="margin-bottom: 10px">Удалить</a>
   <br>
-  <a th:href="'/CellType/edit/' + ${el.id_celltype}" class="btn btn-primary" style="margin-bottom: 10px">Изменить данные</a>
+  <a th:href="'/MealPlan/edit/' + ${el.id_mealplan}" class="btn btn-primary" style="margin-bottom: 10px">Изменить данные</a>
   <br>
-  <a href="/CellType/" class="btn btn-primary" >Назад</a>
+  <a href="/MealPlan/" class="btn btn-primary" >Назад</a>
 </div>
 </body>
 </html>

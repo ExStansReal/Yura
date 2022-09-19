@@ -49,8 +49,10 @@ public class UsersController {
             BindingResult bind,
             Model model){
 
-        if(bind.hasErrors())
+        if(bind.hasErrors()) {
+            model.addAttribute("user",new User());
             return "Users/add";
+        }
 
         List<Post> posts= postRepository.findByName("Пользователь");
         newOne.setActive(true);
@@ -81,18 +83,21 @@ public class UsersController {
     @PostMapping("/edit/{id}")
     public  String editNews(
             @PathVariable("id")Long id,
-            @Valid User user,@RequestParam String namePost, BindingResult bind, Model model
+            @Valid User user, BindingResult bind, Model model , @RequestParam String namePost
     )
     {
         List<Post> posts= postRepository.findByName(namePost);
         User edit_user = userRepository.findById(id).orElseThrow();
         if(!userRepository.existsById(id))
         {
+
             return "redirect:/Users/";
         }
-        if(bind.hasErrors())
+        if(bind.hasErrors()) {
+            Iterable<Post> address = postRepository.findAll();
+            model.addAttribute("posts",address);
             return "Users/Edit";
-
+        }
         edit_user.setSurname(user.getSurname());
         edit_user.setName(user.getName());
         edit_user.setPatronymec(user.getPatronymec());

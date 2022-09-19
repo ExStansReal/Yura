@@ -140,7 +140,7 @@ public class ZooController {
         Optional<Zoopark> news = zooparkRepository.findById(id);
         ArrayList<Zoopark> newArrayList = new ArrayList<>();
         news.ifPresent(newArrayList::add);
-        model.addAttribute("type",newArrayList);
+        model.addAttribute("zoopark",newArrayList);
 
         return "Zoo/Info";
     }

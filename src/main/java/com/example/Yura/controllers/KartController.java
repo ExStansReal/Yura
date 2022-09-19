@@ -3,14 +3,10 @@ package com.example.Yura.controllers;
 
 
 import com.example.Yura.Repositoriy.KartRepository;
-import com.example.Yura.Repositoriy.PostRepository;
 import com.example.Yura.Repositoriy.UserRepository;
-import com.example.Yura.models.Post;
-import com.example.Yura.models.Role;
 import com.example.Yura.models.User;
 import com.example.Yura.models.Kart;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -48,21 +44,29 @@ public class KartController {
 
     @PostMapping("/add")
     public  String add(
-            @ModelAttribute("kart") @Valid Kart newOne, @RequestParam String user,
-            BindingResult bind,
+            @ModelAttribute("kart") @Valid Kart newOne, BindingResult bind,@RequestParam String user,
             Model model){
 
-        if(bind.hasErrors())
+        if(bind.hasErrors()) {
+            model.addAttribute("users",userRepository.findAll());
             return "Kart/add";
+        }
+        if(user.isEmpty()) {
+            model.addAttribute("users",userRepository.findAll());
+            return "Kart/add";
+        }
 
         Iterable<Kart> karts =  kartRepository.findAll();
 
 
         for (Kart find_kart : karts)
         {
-            if(find_kart.getUserUserName() == user)
+            if(find_kart.getUserUserName().equals(user))
             {
-                return "redirect:/Kart/"; //это если в какой-то карточке уже есть другой пользователь
+                model.addAttribute("error","У этого пользователя уже есть карта!");
+                model.addAttribute("kart",new Kart());
+                model.addAttribute("users",userRepository.findAll());
+                return "Kart/add";
             }
         }
 
@@ -98,24 +102,26 @@ public class KartController {
     @PostMapping("/edit/{id}")
     public  String editNews(
             @PathVariable("id")Long id,
-            @Valid Kart kart,@RequestParam String username, BindingResult bind, Model model
+            @Valid Kart kart,BindingResult bind, Model model
     )
     {
 
-        if(bind.hasErrors())
+        if(bind.hasErrors()) {
+            Optional<Kart> news = kartRepository.findById(id);
+            ArrayList<Kart> newArrayList = new ArrayList<>();
+            news.ifPresent(newArrayList::add);
+            model.addAttribute("kart",newArrayList.get(0));
+
+            Iterable<User> address = userRepository.findAll();
+            model.addAttribute("users",address);
             return "Kart/Edit";
-
-        List<User> user_find= userRepository.findByUsername(username);
-
-        Iterable<Kart> karts = kartRepository.findAll();
-
-        for (Kart find_kart : karts)
-        {
-            if(find_kart.getUserUserName() == username)
-            {
-                return "redirect:/Kart/"; //это если в какой-то карточке уже есть другой пользователь
-            }
         }
+
+        Kart kart_Find = kartRepository.findById(id).orElseThrow();
+
+        List<User> user_find= userRepository.findByUsername(kart_Find.getUserUserName());
+
+
 
         if(!kartRepository.existsById(id))
         {
@@ -144,8 +150,7 @@ public class KartController {
             return "Kart/index";
         }
         else {
-            Integer TrueKey = Integer.parseInt(key);
-            List<Kart> bananasList = kartRepository.findByPersonalkey(TrueKey);
+            List<Kart> bananasList = kartRepository.findByPersonalkey(key);
             model.addAttribute("karts", bananasList);
             return "/Kart/index";
         }
@@ -162,8 +167,7 @@ public class KartController {
             return "Kart/index";
         }
         else {
-            Integer TrueKey = Integer.parseInt(key);
-            List<Kart> bananasList = kartRepository.findByPersonalkeyContains(TrueKey);
+            List<Kart> bananasList = kartRepository.findByPersonalkeyContains(key);
             model.addAttribute("karts", bananasList);
             return "/Kart/index";
         }

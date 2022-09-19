@@ -10,10 +10,9 @@ public class Kart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_kart;
 
-    @Min(message = "Число не может быть отрицательным",value = 0)
-    @Max(message = "Число не может быть больше 1000000",value = 1000000)
-    @NotNull(message = "Число не может быть пустым")
-    private Integer personalkey;
+
+    @NotEmpty(message = "Число не может быть пустым")
+    private String personalkey;
 
     private Boolean allowed;
 
@@ -25,7 +24,7 @@ public class Kart {
     @Size(message = "Строка не может быть меньше или больше", min = 3, max = 1000)
     private String type;
 
-    public Kart(Integer personal_Key, Boolean allowedD, User user, String typeD) {
+    public Kart(String  personal_Key, Boolean allowedD, User user, String typeD) {
         personalkey = personal_Key;
         allowed = allowedD;
         this.user = user;
@@ -49,11 +48,11 @@ public class Kart {
         this.id_kart = ID_Kart;
     }
 
-    public Integer getPersonal_Key() {
+    public String getPersonal_Key() {
         return personalkey;
     }
 
-    public void setPersonal_Key(Integer personal_Key) {
+    public void setPersonal_Key(String personal_Key) {
         personalkey = personal_Key;
     }
 

@@ -9,20 +9,17 @@
 
 <div  th:insert="Fragments/Header :: defaultHeader"/>
 
+<h3  th:text="${error}" style="color: red"></h3>
+<br>
 
-
-<form th:action="'/Post/edit/' + ${id}", method="post" class="background_form"  th:object="${post}" style="margin-top: 10px">
+<form th:action="'/FoodType/edit/' + ${id}", method="post" class="background_form"  th:object="${type}" style="margin-top: 10px">
 
     <p>Название
-        <input type="text" id="name" th:field="*{name}" placeholder="Имя">
-    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
-    <p>Зарпалата
-        <input type="number" id="salary" th:field="*{salary}" placeholder="Зарпалата">
-    <div th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}"></div>
+        <input type="text" id="name" th:field="*{name}" placeholder="Название">
     <br>
 
     <input type="submit" value="Изменить данные" class="btn btn-seccsess"/> <br>
-    <a class="btn btn-primary" href="/Post/"> Назад</a>
+    <a class="btn btn-primary" href="/FoodType/"> Назад</a>
 
 
 
