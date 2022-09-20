@@ -15,9 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 @RequestMapping("/Users")
@@ -52,13 +50,16 @@ public class UsersController {
             Model model){
 
         if(bind.hasErrors()) {
-            model.addAttribute("user",new User());
+            model.addAttribute("user",newOne);
             return "Users/add";
         }
 
         List<Post> posts= postRepository.findByName("Пользователь");
         newOne.setActive(true);
         newOne.setPost(posts.get(0));
+        Set <Role> roles = new HashSet<>();
+        roles.add(Role.USER);
+        newOne.setRoles(roles);
 
         userRepository.save(newOne);
         return "redirect:/Users/";

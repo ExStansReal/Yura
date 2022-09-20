@@ -14,6 +14,7 @@
   <p>Название
     <input type="text" id="name" th:field="*{name}" placeholder="Имя">
   <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+  <p/>
   <p>Фамилия
     <input type="text" id="surname" th:field="*{surname}" placeholder="Фамилия">
   <div th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></div>

@@ -59,7 +59,7 @@ public class CellController {
             model.addAttribute(
                     "error",
                     "Какое-то поле не заполненно");
-            model.addAttribute("cell",new Cell());
+            model.addAttribute("cell",newOne);
             model.addAttribute("zooparks", zooparkRepository.findAll());
             model.addAttribute("cellType", cellTypeRepository.findAll());
             return "Cell/add";
