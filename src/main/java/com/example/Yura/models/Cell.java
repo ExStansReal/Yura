@@ -18,6 +18,9 @@ public class Cell {
     @ManyToOne(optional = true, cascade = CascadeType.ALL)
     private Zoopark zoopark;
 
+    @OneToMany(mappedBy = "cell", fetch = FetchType.EAGER)
+    private Collection<Animal> animals;
+
     private String name;
 
     private Integer size;

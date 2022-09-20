@@ -3,6 +3,7 @@ package com.example.Yura.models;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.Collection;
 import java.util.Set;
 
 @Entity
@@ -22,6 +23,9 @@ public class User {
 
     @OneToOne(optional = true, mappedBy = "user")
     private Kart kart;
+
+    @OneToMany (mappedBy = "user", fetch = FetchType.EAGER)
+    private Collection<PrefferedAnimals> animals;
 
 
     private boolean active;

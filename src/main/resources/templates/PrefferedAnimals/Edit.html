@@ -11,29 +11,27 @@
 
 <h3  th:text="${error}" style="color: red"></h3>
 
-<form th:action="'/Cell/edit/' + ${id}", method="post" class="background_form"  th:object="${cell}" style="margin-top: 10px">
-    <p>Название
-        <input type="text" id="name" th:field="*{name}" placeholder="Название">
-    <p>Размер (метры кубические)
-        <input type="number" min="0" id="size" th:field="*{size}" placeholder="Размер">
+<form th:action="'/PrefferedAnimals/edit/' + ${id}", method="post" class="background_form"  th:object="${pref}" style="margin-top: 10px">
+    <p>Причина почему нравится животное
+        <input type="text" id="cause" th:field="*{cause}" placeholder="Причина">
         <br>
-    <p>Выберете зоопарк:</p>
-    <select style="margin-top: 10px"  name="park">
-        <div th:each="element : ${zooparks}">
+    <p>Выберете животное:</p>
+    <select style="margin-top: 10px" name="animalChoose">
+        <div th:each="element : ${animal}">
             <option th:text="${element.name}"></option>
         </div>
     </select>
     <br>
-    <p>Выберете тип клетки:</p>
-    <select style="margin-top: 10px"  name="type">
-        <div th:each="element : ${cellType}">
-            <option th:text="${element.name}"></option>
+    <p>Выберете пользователя:</p>
+    <select style="margin-top: 10px"  name="user">
+        <div th:each="element : ${user}">
+            <option th:text="${element.surname}"></option>
         </div>
     </select>
     <br>
 
     <input type="submit" value="Изменить данные" class="btn btn-seccsess"/> <br>
-    <a class="btn btn-primary" href="/Cell/"> Назад</a>
+    <a class="btn btn-primary" href="/PrefferedAnimals/"> Назад</a>
 
 
 

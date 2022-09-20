@@ -9,32 +9,30 @@
 <body>
 <div  th:insert="Fragments/Header :: defaultHeader"/>
 
-<h1 class="background_form">Страница плана приёма пищи</h1>
+<h1 class="background_form">Страница типов животных</h1>
 <ul>
   <li>
-    <form  action="/MealPlan/search" class="background_form" style="display: inline-block">
-      <input  name="time" id="title" placeholder="Точный поиск">
+    <form action="/AnimalType/search" class="background_form" style="display: inline-block">
+      <input name="name" id="title" placeholder="Точный поиск">
       <input type="submit" value="Найти">
 
     </form>
   </li>
   <li>
-    <form  action="/MealPlan/searchContaints" class="background_form" style="display: inline-block">
-      <input  name="time" id="name1" placeholder="Не точный поиск">
+    <form action="/AnimalType/searchContaints" class="background_form" style="display: inline-block">
+      <input name="name" id="name1" placeholder="Не точный поиск">
       <input type="submit" value="Найти">
 
     </form>
   </li>
   <li style="display: inline-grid; margin-top: 10px">
-    <div th:each="el : ${meals}" class="background_form" style="display: inline-block; margin-top: 10px">
-      <h3 th:text="${el.timefrom}"></h3>
-      <h4 th:text="${el.timefor}"></h4>
-      <h4 th:text="${el.type.getName()}"></h4>
-      <a th:href="'/MealPlan/' + ${el.id_mealplan}" class="btn btn-primary" style="margin-bottom: 10px">Данные</a>
+    <div th:each="el : ${types}" class="background_form" style="display: inline-block; margin-top: 10px">
+      <h3 th:text="${el.name}"></h3>
+      <a th:href="'/AnimalType/' + ${el.id_typeofanimal}" class="btn btn-primary" style="margin-bottom: 10px">Подробнее</a>
     </div>
   </li>
   <li style="margin-top: 10px">
-    <a href="/MealPlan/addView" class="btn btn-primary">Добавить</a>
+    <a href="/AnimalType/addView" class="btn btn-primary">Добавить</a>
   </li>
 </ul>
 </body>

@@ -10,6 +10,7 @@ import com.example.Yura.models.Kart;
 import com.example.Yura.models.MealPlan;
 import com.example.Yura.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,6 +23,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/MealPlan")
+@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
 public class MealPlanController {
 
     @Autowired

@@ -3,6 +3,7 @@ package com.example.Yura.controllers;
 import com.example.Yura.Repositoriy.*;
 import com.example.Yura.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +17,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/Cell")
+@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
 public class CellController {
 
     @Autowired
@@ -44,20 +46,6 @@ public class CellController {
 
         return "Cell/add";
 
-        /*
-        if(zooparkRepository.findAll().iterator().hasNext()) {
-            model.addAttribute("cell", new Cell());
-            model.addAttribute("zooparks", zooparkRepository.findAll());
-            model.addAttribute("cellType", cellRepository.findAll());
-
-            return "Cell/add";
-        }
-        else {
-            model.addAttribute("error","Нет всех данных чтобы выполнить данное действие");
-            return "Cell/index";
-        }
-
-         */
     }
 
 

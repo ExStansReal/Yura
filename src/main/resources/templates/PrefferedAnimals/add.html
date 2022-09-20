@@ -10,23 +10,21 @@
 <div  th:insert="Fragments/Header :: defaultHeader"/>
 <h3  th:text="${error}" style="color: red"></h3>
 <div class="background_form">
-<form  action="/Cell/add" method="post" th:object="${cell}" style="display: inline-block">
-  <p>Название
-    <input type="text" id="name" th:field="*{name}" placeholder="Название">
-  <p>Размер (метры кубические)
-    <input type="number" min="0" id="size" th:field="*{size}" placeholder="Размер">
+<form  action="/PrefferedAnimals/add" method="post" th:object="${pref}" style="display: inline-block">
+  <p>Причина почему нравится животное
+    <input type="text" id="cause" th:field="*{cause}" placeholder="Причина">
   <br>
-  <p>Выберете зоопарк:</p>
-  <select style="margin-top: 10px" id="zooparkSelected" name="zooparkSelected">
-    <div th:each="element : ${zooparks}">
+  <p>Выберете животное:</p>
+  <select style="margin-top: 10px" name="animalChoose">
+    <div th:each="element : ${animal}">
       <option th:text="${element.name}"></option>
     </div>
   </select>
   <br>
-  <p>Выберете тип клетки:</p>
-  <select style="margin-top: 10px"  name="type">
-    <div th:each="element : ${cellType}">
-      <option th:text="${element.name}"></option>
+  <p>Выберете пользователя:</p>
+  <select style="margin-top: 10px"  name="user">
+    <div th:each="element : ${user}">
+      <option th:text="${element.surname}"></option>
     </div>
   </select>
   <br>
@@ -34,7 +32,7 @@
 </form>
 
 <br>
-<a href="/Cell/" class="btn btn-primary">Назад</a>
+<a href="/PrefferedAnimals/" class="btn btn-primary">Назад</a>
 </div>
 </body>
 </html>

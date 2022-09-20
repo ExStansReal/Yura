@@ -6,6 +6,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.Collection;
 
 @Entity
 public class MealPlan {
@@ -18,6 +19,8 @@ public class MealPlan {
     private FoodType type;
 
 
+    @OneToMany(mappedBy = "meal", fetch = FetchType.EAGER)
+    private Collection<Animal> animals;
 
     @NotEmpty(message = "Время не может быть пустым")
     private String timefrom,timefor;
